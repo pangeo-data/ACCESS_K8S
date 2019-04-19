@@ -120,7 +120,7 @@ spec:
     spec:
       serviceAccountName: cluster-autoscaler
       containers:
-        - image: k8s.gcr.io/cluster-autoscaler:v1.2.2
+        - image: k8s.gcr.io/cluster-autoscaler:v1.3.8
           name: cluster-autoscaler
           resources:
             limits:
@@ -135,7 +135,9 @@ spec:
             - --stderrthreshold=info
             - --cloud-provider=aws
             - --skip-nodes-with-local-storage=false
-            - --nodes=$NODES_ASG
+            - [CHANGE-HUB-NODES]
+            - [CHANGE-NOTEBOOK-NODES]
+            - [CHANGE-DASK-NODES]
           env:
             - name: AWS_REGION
               value: us-west-2
@@ -148,5 +150,3 @@ spec:
         - name: ssl-certs
           hostPath:
             path: "/etc/ssl/certs/ca-bundle.crt"
-
-
