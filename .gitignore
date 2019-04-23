@@ -1,3 +1,10 @@
+# Other
+*.bak
+*.pem
+*.pub
+NOTES.txt
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

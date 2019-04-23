@@ -19,11 +19,12 @@
                 "iam:PassRole",
                 "iam:DetachRolePolicy",
                 "iam:DeleteRolePolicy",
-                "iam:GetRolePolicy"
+                "iam:GetRolePolicy",
+                "iam:CreatePolicy"
             ],
             "Resource": [
-                "arn:aws:iam::[CHANGE-AWS-ACCOUNT]:instance-profile/eksctl-*",
-                "arn:aws:iam::[CHANGE-AWS-ACCOUNT]:role/eksctl-*"
+                "arn:aws:iam::CHANGE_ACCOUNT_NUMBER:instance-profile/eksctl-*",
+                "arn:aws:iam::CHANGE_ACCOUNT_NUMBER:role/eksctl-*"
             ]
         },
         {
@@ -41,6 +42,13 @@
         {
             "Effect": "Allow",
             "Action": [
+                "elasticfilesystem:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
                 "autoscaling:DescribeAutoScalingGroups",
                 "autoscaling:DescribeLaunchConfigurations",
                 "autoscaling:DescribeScalingActivities",
@@ -48,7 +56,8 @@
                 "autoscaling:DeleteLaunchConfiguration",
                 "autoscaling:UpdateAutoScalingGroup",
                 "autoscaling:DeleteAutoScalingGroup",
-                "autoscaling:CreateAutoScalingGroup"
+                "autoscaling:CreateAutoScalingGroup",
+                "autoscaling:CreateOrUpdateTags"
             ],
             "Resource": "*"
         },

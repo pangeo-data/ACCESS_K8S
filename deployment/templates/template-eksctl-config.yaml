@@ -2,37 +2,44 @@ apiVersion: eksctl.io/v1alpha4
 kind: ClusterConfig
 
 metadata:
-  name: pangeo
-  profile: circleci
-  region: us-west-2
-  updateAuthConfigmap: True
+  name: CHANGE_CLUSTER_NAME
+  region: CHANGE_REGION
 
 nodeGroups:
   - name: hub
     instanceType: m5.large
+    minSize: 1
+    maxSize: 1
+    desiredCapacity: 1
+    volumeSize: 10
+    volumeType: gp2
     allowSSH: true
-    sshPublicKeyPath: "./pangeo-access-us-west-2.pub"
+    sshPublicKeyPath: CHANGE_PUBLICKEY
+    ami: auto
+    amiFamily: AmazonLinux2
   - name: user-notebook
     instanceType: m5.2xlarge
     minSize: 0
     maxSize: 20
     desiredCapacity: 0
     allowSSH: true
-    sshPublicKeyPath: "./pangeo-access-us-west-2.pub"
+    sshPublicKeyPath: CHANGE_PUBLICKEY
     ami: auto
     amiFamily: AmazonLinux2
     iam:
-        withAddonPolicies:
-            autoScaler: true
+      withAddonPolicies:
+          autoScaler: true
+          efs: true
   - name: dask-worker
     instanceType: r5.2xlarge
     minSize: 0
     maxSize: 20
     desiredCapacity: 0
     allowSSH: true
-    sshPublicKeyPath: "./pangeo-access-us-west-2.pub"
+    sshPublicKeyPath: CHANGE_PUBLICKEY
     ami: auto
     amiFamily: AmazonLinux2
     iam:
-        withAddonPolicies:
-            autoScaler: true
+      withAddonPolicies:
+          autoScaler: true
+          efs: true
