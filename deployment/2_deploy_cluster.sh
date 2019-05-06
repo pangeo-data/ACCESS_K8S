@@ -39,5 +39,7 @@ do
 	aws efs create-mount-target --file-system-id $EFSID --subnet-id $i --security-groups $SG_NODES_SHARED
 done
 
+# Connect efs to cluster
+
 
 echo "Done! to delete this cluster run 'eksctl delete cluster --name ${CLUSTER_NAME}'"
