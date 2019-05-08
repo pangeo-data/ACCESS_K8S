@@ -1,13 +1,12 @@
 #!/bin/bash
 
 # these commands are taken from zero2jupyterhub docs
-EMAIL=scottyh@uw.edu
 REGION=$(aws configure get region)
 EFSID=$(aws efs create-file-system --creation-token newefs --tags "Key=Name,Value=$CLUSTER_NAME" | jq -r ".FileSystemId")
 
 set -e
 
-kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=$EMAIL
+kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin
 kubectl create serviceaccount tiller --namespace=kube-system
 kubectl create clusterrolebinding tiller --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 helm init --service-account tiller
