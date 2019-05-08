@@ -11,7 +11,7 @@ nodeGroups:
     minSize: 1
     maxSize: 1
     desiredCapacity: 1
-    volumeSize: 10
+    volumeSize: 100
     volumeType: gp2
     allowSSH: true
     sshPublicKeyPath: CHANGE_PUBLICKEY
@@ -22,6 +22,8 @@ nodeGroups:
     minSize: 0
     maxSize: 20
     desiredCapacity: 0
+    volumeSize: 100
+    volumeType: gp2
     allowSSH: true
     sshPublicKeyPath: CHANGE_PUBLICKEY
     ami: auto
@@ -34,6 +36,8 @@ nodeGroups:
     instanceType: r5.2xlarge
     minSize: 0
     maxSize: 20
+    volumeSize: 100
+    volumeType: gp2
     desiredCapacity: 0
     allowSSH: true
     sshPublicKeyPath: CHANGE_PUBLICKEY
