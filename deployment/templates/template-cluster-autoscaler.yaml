@@ -41,7 +41,7 @@ rules:
   resources: ["poddisruptionbudgets"]
   verbs: ["watch","list"]
 - apiGroups: ["apps"]
-  resources: ["statefulsets"]
+  resources: ["statefulsets","replicasets"]
   verbs: ["watch","list","get"]
 - apiGroups: ["storage.k8s.io"]
   resources: ["storageclasses"]
@@ -120,7 +120,7 @@ spec:
     spec:
       serviceAccountName: cluster-autoscaler
       containers:
-        - image: k8s.gcr.io/cluster-autoscaler:v1.2.2
+        - image: k8s.gcr.io/cluster-autoscaler:CHANGE_AUTOSCALER_VERSION
           name: cluster-autoscaler
           resources:
             limits:
@@ -135,10 +135,11 @@ spec:
             - --stderrthreshold=info
             - --cloud-provider=aws
             - --skip-nodes-with-local-storage=false
-            - --nodes=$NODES_ASG
+            - --nodes=CHANGE_NODEGROUP_NOTEBOOK
+            - --nodes=CHANGE_NODEGROUP_DASK
           env:
             - name: AWS_REGION
-              value: us-west-2
+              value: CHANGE_REGION
           volumeMounts:
             - name: ssl-certs
               mountPath: /etc/ssl/certs/ca-certificates.crt
@@ -148,5 +149,3 @@ spec:
         - name: ssl-certs
           hostPath:
             path: "/etc/ssl/certs/ca-bundle.crt"
-
-
