@@ -1,5 +1,5 @@
 # ACCESS_K8S
-Configs and scripts for building kubernetes clusters managed by the Pangeo NASA ACCESS Project. Much of building the cluster uses [eksctl](https://github.com/weaveworks/eksctl) following the steps outlined here:[https://eksworkshop.com/] (https://eksworkshop.com/)
+Configs and scripts for building kubernetes clusters managed by the Pangeo NASA ACCESS Project. Much of building the cluster uses [eksctl](https://github.com/weaveworks/eksctl) following the steps outlined here:[https://eksworkshop.com/](https://eksworkshop.com/)
 
 Running this deploy script will setup a Kubernetes Cluster on AWS that is needed to deploy a Pangeo JupyerHub. Once this cluster is setup, the JupyterHub configuration and deployment happens here https://github.com/pangeo-data/pangeo-cloud-federation).
 
