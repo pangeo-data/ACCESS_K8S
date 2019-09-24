@@ -13,7 +13,7 @@ Running this deploy script will setup a Kubernetes Cluster on AWS that is needed
 * Scripts in this repository automate steps outlined in Zero2JupyterHub for deploying a kubernetes cluster with AWS EKS
 https://zero-to-jupyterhub.readthedocs.io/en/latest/amazon/step-zero-aws-eks.html#
 
-* Scripts require `awscli`, `kubectl` and `aws-iam-authenticator` and `eksctl` to run
+* Scripts require `awscli`, `kubectl` and `aws-iam-authenticator`, [`jq`](https://stedolan.github.io/jq/download/), and `eksctl` to run.
 
 
 ### Customize
